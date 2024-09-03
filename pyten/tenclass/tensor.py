@@ -170,7 +170,7 @@ class Tensor(object):
         shape = list(self.shape)
         order = [dim] + list(range(0, dim)) + list(range(dim + 1, n))
         new_data = self.permute(order).data
-        new_data = new_data.reshape(shape[dim], tools.prod(shape) / shape[dim])
+        new_data = new_data.reshape(shape[dim], tools.prod(shape) // shape[dim])
         if option is None:
             new_data = np.dot(matrix, new_data)
             p = matrix.shape[0]
